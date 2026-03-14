@@ -20,7 +20,7 @@ header{
     display:flex;
     justify-content:space-between;
     align-items:center;
-    padding:20px 10%;
+    padding:15px 10%;
     background:#111;
     border-bottom:1px solid #333;
     position: sticky;
@@ -28,8 +28,8 @@ header{
     z-index:1000;
 }
 
-.Loo img{
-    height:40px;
+.logo img{
+    height:35px; /* smaller logo */
 }
 
 nav a{
@@ -58,16 +58,16 @@ nav a:hover{
 
 .hero h1{
     font-size:3rem;
-    margin-bottom:10px;
+    margin-bottom:15px;
     font-weight:700;
     text-shadow: 2px 2px 8px rgba(0,0,0,0.7);
 }
 
 .hero p{
-    font-size:1.2rem;
+    font-size:1.1rem;
     color:#ddd;
-    max-width:600px;
-    line-height:1.5;
+    max-width:700px;
+    line-height:1.6;
     text-shadow: 1px 1px 4px rgba(0,0,0,0.7);
 }
 
@@ -122,6 +122,168 @@ nav a:hover{
 }
 
 /* Services Section */
+.services{
+    padding:80px 10%;
+    background:#111;
+    text-align:center;
+}
+
+.services h2{
+    color:#fff;
+    font-size:2rem;
+    margin-bottom:40px;
+}
+
+.service-box{
+    margin-top:30px;
+    display:flex;
+    flex-wrap:wrap;
+    justify-content:center;
+    gap:40px;
+}
+
+.card{
+    width:250px;
+    background:#1a1a1a;
+    padding:20px;
+    border-radius:8px;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.5);
+    transition: transform 0.3s, box-shadow 0.3s;
+}
+
+.card:hover{
+    transform: translateY(-5px);
+    box-shadow: 0 8px 25px rgba(0,0,0,0.7);
+}
+
+.card h3{
+    margin-bottom:10px;
+    font-size:1.2rem;
+    color:#ff6600;
+}
+
+.card p{
+    font-size:0.95rem;
+    color:#ddd;
+}
+
+/* Why Choose Us */
+.why-choose{
+    max-width:700px;
+    margin:40px auto 0;
+    text-align:left;
+    color:#ddd;
+    line-height:1.6;
+}
+
+.why-choose li{
+    margin-bottom:10px;
+}
+
+/* Contact Section */
+.contact{
+    padding:80px 10%;
+    background:#0f0f0f;
+    text-align:center;
+}
+
+.contact h2{
+    color:#fff;
+    font-size:2rem;
+    margin-bottom:20px;
+}
+
+.contact p{
+    font-size:1rem;
+    color:#ccc;
+    margin:5px 0;
+}
+
+.contact button{
+    margin-top:20px;
+    padding:14px 28px;
+    border:none;
+    background:#ff6600;
+    color:#fff;
+    font-size:16px;
+    font-weight:600;
+    border-radius:4px;
+    cursor:pointer;
+    transition: background 0.3s;
+}
+
+.contact button:hover{
+    background:#e65c00;
+}
+
+/* Footer */
+footer{
+    text-align:center;
+    padding:30px;
+    background:#111;
+    border-top:1px solid #333;
+    font-size:14px;
+    color:#888;
+}
+
+/* Responsive */
+@media(max-width:768px){
+    .hero h1{
+        font-size:2rem;
+    }
+
+    .hero p{
+        font-size:1rem;
+    }
+
+    .grid img{
+        height:200px;
+    }
+
+    .card{
+        width:100%;
+    }
+}
+</style>
+</head>
+
+<body>
+
+<!-- Header -->
+<header>
+    <div class="logo">
+        <img src="Logo.png.PNG" alt="4PF Photo Studio Logo">
+    </div>
+    <nav>
+        <a href="#">Home</a>
+        <a href="#portfolio">Portfolio</a>
+        <a href="#services">Services</a>
+        <a href="#contact">Contact</a>
+    </nav>
+</header>
+
+<!-- Hero Section -->
+<section class="hero">
+    <h1>Capturing Moments That Last Forever</h1>
+    <p>Wedding Photos • Birthday Shoots • Passport Photos • Funeral Livestreams • Videography • Graphic Design</p>
+    <a href="#contact">
+        <button>Book a Session</button>
+    </a>
+</section>
+
+<!-- Portfolio Section -->
+<section class="portfolio" id="portfolio">
+    <h2>Portfolio</h2>
+    <div class="grid">
+        <img src="https://picsum.photos/500/600?1" alt="Portfolio 1">
+        <img src="https://picsum.photos/500/600?2" alt="Portfolio 2">
+        <img src="https://picsum.photos/500/600?3" alt="Portfolio 3">
+        <img src="https://picsum.photos/500/600?4" alt="Portfolio 4">
+        <img src="https://picsum.photos/500/600?5" alt="Portfolio 5">
+        <img src="https://picsum.photos/500/600?6" alt="Portfolio 6">
+    </div>
+</section>
+
 <!-- Services Section -->
 <section class="services" id="services">
     <h2>Our Services</h2>
@@ -153,134 +315,14 @@ nav a:hover{
     </div>
 
     <h2 style="margin-top:60px;">Why Choose Us?</h2>
-    <ul style="list-style:none; padding:0; max-width:700px; margin:20px auto; color:#ddd; line-height:1.6;">
-        <li>• Professional and reliable service</li>
-        <li>• High-quality photos and videos</li>
-        <li>• Affordable packages</li>
-        <li>• Fast turnaround time</li>
-        <li>• Friendly, comfortable shooting environment</li>
-        <li>• Instagram integration for live portfolio updates</li>
+    <ul class="why-choose">
+        <li>Professional and reliable service</li>
+        <li>High-quality photos and videos</li>
+        <li>Affordable packages</li>
+        <li>Fast turnaround time</li>
+        <li>Friendly, comfortable shooting environment</li>
+        <li>Instagram integration for live portfolio updates</li>
     </ul>
-</section>
-.card:hover{
-    transform: translateY(-5px);
-    box-shadow: 0 8px 25px rgba(0,0,0,0.7);
-}
-
-.card h3{
-    margin-bottom:10px;
-    font-size:1.2rem;
-    color:#ff6600;
-}
-
-.card p{
-    font-size:0.95rem;
-    color:#ddd;
-}
-
-/* Contact Section */
-.contact{
-    padding:80px 10%;
-    background:#0f0f0f;
-    text-align:center;
-}
-
-.contact h2{
-    color:#fff;
-    font-size:2rem;
-    margin-bottom:20px;
-}
-
-.contact p{
-    font-size:1rem;
-    color:#ccc;
-    margin:5px 0;
-}
-
-/* Footer */
-footer{
-    text-align:center;
-    padding:30px;
-    background:#111;
-    border-top:1px solid #333;
-    font-size:14px;
-    color:#888;
-}
-
-/* Responsive */
-@media(max-width:768px){
-    .hero h1{
-        font-size:2rem;
-    }
-
-    .hero p{
-        font-size:1rem;
-    }
-
-    .grid img{
-        height:200px;
-    }
-
-    .card{
-        width:100%;
-    }
-}
-
-</style>
-</head>
-
-<body>
-
-<!-- Header -->
-<header>
-    <div class="Logo">
-        <img src="Logo.png.PNG" alt="4PF Photo Studio Logo">
-    </div>
-    <nav>
-        <a href="#">Home</a>
-        <a href="#portfolio">Portfolio</a>
-        <a href="#services">Services</a>
-        <a href="#contact">Contact</a>
-    </nav>
-</header>
-
-<!-- Hero Section -->
-<section class="hero">
-    <h1>Capturing Moments That Last Forever</h1>
-    <p>Professional Photography • Weddings • Portraits • Events</p>
-    <a href="#contact"><button>Book a Session</button></a>
-</section>
-
-<!-- Portfolio Section -->
-<section class="portfolio" id="portfolio">
-    <h2>Portfolio</h2>
-    <div class="grid">
-        <img src="https://picsum.photos/500/600?1" alt="Portfolio 1">
-        <img src="https://picsum.photos/500/600?2" alt="Portfolio 2">
-        <img src="https://picsum.photos/500/600?3" alt="Portfolio 3">
-        <img src="https://picsum.photos/500/600?4" alt="Portfolio 4">
-        <img src="https://picsum.photos/500/600?5" alt="Portfolio 5">
-        <img src="https://picsum.photos/500/600?6" alt="Portfolio 6">
-    </div>
-</section>
-
-<!-- Services Section -->
-<section class="services" id="services">
-    <h2>Services</h2>
-    <div class="service-box">
-        <div class="card">
-            <h3>Wedding Photography</h3>
-            <p>Full ceremony and reception coverage with cinematic edits.</p>
-        </div>
-        <div class="card">
-            <h3>Portrait Sessions</h3>
-            <p>Studio and outdoor portrait photography sessions.</p>
-        </div>
-        <div class="card">
-            <h3>Event Coverage</h3>
-            <p>Professional photography for parties and corporate events.</p>
-        </div>
-    </div>
 </section>
 
 <!-- Contact Section -->
