@@ -7,121 +7,288 @@
 
 <style>
 /* GENERAL */
-html{ scroll-behavior:smooth; }
-body{ margin:0; font-family:'Helvetica Neue', Arial, sans-serif; background:#0a0a0a; color:#f5f5f5; }
+html{scroll-behavior:smooth;}
+body{
+  margin:0;
+  font-family:'Helvetica Neue',Arial,sans-serif;
+  background:#0f0f0f;
+  color:#f5f5f5;
+}
 
 /* HEADER */
 header{
-  display:flex; justify-content:space-between; align-items:center;
-  padding:15px 10%; background:#111; border-bottom:1px solid #222;
-  position:sticky; top:0; z-index:1000; box-shadow:0 2px 10px rgba(0,0,0,0.7);
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+  padding:15px 10%;
+  background:#111;
+  position:sticky;
+  top:0;
+  z-index:1000;
 }
-.logo img{ height:40px; }
-.menu-toggle{ font-size:28px; cursor:pointer; color:white; display:none; }
 
-/* NAV */
-#nav-menu{ display:flex; gap:20px; }
-#nav-menu a{ color:#f5f5f5; text-decoration:none; font-weight:500; transition:0.3s; }
-#nav-menu a:hover{ color:#ff6600; }
+.logo img{
+  height:35px;
+}
+
+nav a{
+  margin-left:20px;
+  text-decoration:none;
+  color:#f5f5f5;
+  font-weight:500;
+  transition:0.3s;
+}
+
+nav a:hover{
+  color:#ff6600;
+}
+
+/* MOBILE DROPDOWN */
+.menu-toggle{
+  font-size:28px;
+  cursor:pointer;
+  display:none;
+}
+
+#nav-menu{
+  position:absolute;
+  top:70px;
+  right:10%;
+  background:#111;
+  display:flex;
+  flex-direction:row;
+}
+
+@media(max-width:768px){
+  .menu-toggle{ display:block; }
+  #nav-menu{
+    flex-direction:column;
+    display:none;
+    padding:20px;
+    border-radius:6px;
+    width:200px;
+  }
+  #nav-menu.active{ display:flex; }
+  #nav-menu a{ margin:10px 0; }
+}
 
 /* HERO */
 .hero{
-  height:90vh; display:flex; flex-direction:column; justify-content:center; align-items:center;
-  text-align:center; background:#111;
-  background:linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0.5)), #111; padding:0 20px;
+  height:90vh;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  text-align:center;
+  background:#111;
+  flex-direction:column;
+  padding:0 20px;
 }
-.hero h1{ font-size:3rem; margin-bottom:15px; font-weight:700; text-shadow:2px 2px 8px rgba(0,0,0,0.7); }
-.hero p{ font-size:1.1rem; max-width:700px; line-height:1.6; color:#ddd; text-shadow:1px 1px 6px rgba(0,0,0,0.6); }
+
+.hero h1{
+  font-size:3rem;
+  margin-bottom:15px;
+  font-weight:700;
+  text-shadow:2px 2px 8px rgba(0,0,0,0.7);
+}
+
+.hero p{
+  font-size:1.1rem;
+  color:#ddd;
+  max-width:700px;
+  line-height:1.6;
+  text-shadow:1px 1px 4px rgba(0,0,0,0.7);
+}
+
 .hero button{
-  margin-top:30px; padding:14px 28px; border:none; background:#ff6600; color:#fff;
-  font-size:16px; font-weight:600; border-radius:4px; cursor:pointer; transition:0.3s;
+  margin-top:30px;
+  padding:14px 28px;
+  border:none;
+  background:#ff6600;
+  color:#fff;
+  font-size:16px;
+  font-weight:600;
+  border-radius:4px;
+  cursor:pointer;
+  transition:0.3s;
 }
-.hero button:hover{ background:#e65c00; transform: scale(1.05); }
 
-/* REVEAL ANIMATION */
-.reveal{ opacity:0; transform:translateY(40px); transition:1s; }
-.reveal.active{ opacity:1; transform:translateY(0); }
+.hero button:hover{
+  background:#e65c00;
+}
 
-/* PORTFOLIO & BTS */
-.portfolio, .behind-scenes{ padding:80px 10%; background:#111; }
-.portfolio h2, .behind-scenes h2{
-  text-align:center; margin-bottom:40px; font-size:2.5rem; color:#fff; text-shadow:1px 1px 6px rgba(0,0,0,0.6);
+/* SECTION ANIMATION */
+.reveal{
+  opacity:0;
+  transform:translateY(40px);
+  transition:1s;
 }
-.grid, .bts-gallery{
-  display:grid; grid-template-columns:repeat(auto-fit,minmax(250px,1fr)); gap:20px;
+.reveal.active{
+  opacity:1;
+  transform:translateY(0);
 }
-.grid-item, .bts-item{
-  position:relative; overflow:hidden; border-radius:8px; cursor:pointer;
-}
-.grid-item img, .bts-item img{
-  width:100%; height:300px; object-fit:cover; transition: transform 0.4s ease, filter 0.4s ease; filter: brightness(0.9);
-}
-.grid-item:hover img, .bts-item:hover img{ transform:scale(1.05); filter: brightness(1); }
-/* Overlay captions */
-.grid-item span, .bts-item span{
-  position:absolute; bottom:0; left:0; width:100%; padding:10px;
-  background:rgba(0,0,0,0.5); color:white; font-size:1rem; opacity:0;
-  transition: opacity 0.3s;
-}
-.grid-item:hover span, .bts-item:hover span{ opacity:1; }
 
-/* SERVICES */
-.services{ padding:80px 10%; background:#0d0d0d; text-align:center; }
-.services h2{ font-size:2.5rem; color:#fff; margin-bottom:40px; text-shadow:1px 1px 6px rgba(0,0,0,0.5); }
-.service-box{ display:flex; flex-wrap:wrap; justify-content:center; gap:30px; }
-.card{
-  width:250px; background:#1a1a1a; padding:20px; border-radius:8px;
-  transition: transform 0.3s, box-shadow 0.3s;
+/* PORTFOLIO */
+.portfolio{
+  padding:80px 10%;
 }
-.card:hover{ transform: translateY(-6px); box-shadow:0 8px 25px rgba(0,0,0,0.5); }
-.card h3{ color:#ff6600; margin-bottom:10px; }
-.card p{ color:#ddd; }
-
-/* PRICES */
-.prices{ padding:80px 10%; background:#111; text-align:center; }
-.prices h2{ font-size:2.5rem; color:#fff; margin-bottom:40px; text-shadow:1px 1px 6px rgba(0,0,0,0.5); }
-.price-box{ display:flex; flex-wrap:wrap; justify-content:center; gap:30px; margin-top:40px; }
-.price-card{
-  background:#1a1a1a; padding:20px; border-radius:8px; width:250px;
-  transition: transform 0.3s, box-shadow 0.3s;
+.portfolio h2{
+  text-align:center;
+  margin-bottom:40px;
+  font-size:2rem;
 }
-.price-card:hover{ transform: translateY(-6px); box-shadow:0 8px 25px rgba(0,0,0,0.5); }
-.price-card h3{ color:#ff6600; margin-bottom:10px; }
-.price-card p, .price-card ul{ color:#ddd; font-size:0.95rem; }
-
-/* PHOTOGRAPHER */
-.photographer{ padding:80px 10%; background:#0d0d0d; text-align:center; }
-.photographer img{ width:200px; height:200px; border-radius:50%; border:4px solid #ff6600; object-fit:cover; margin-bottom:20px; }
-.photographer h2{ font-size:2.5rem; color:#fff; margin-bottom:20px; }
-.photographer p{ max-width:600px; margin:0 auto; color:#ddd; line-height:1.6; }
-
-/* CONTACT */
-.contact{ padding:80px 10%; text-align:center; background:#111; }
-.contact h2{ font-size:2.5rem; color:#fff; margin-bottom:20px; text-shadow:1px 1px 6px rgba(0,0,0,0.5); }
-.contact p{ color:#ddd; margin:5px 0; }
-.contact button{
-  margin-top:20px; padding:14px 28px; border:none; background:#ff6600; color:#fff;
-  font-weight:600; border-radius:4px; cursor:pointer; transition: transform 0.3s, background 0.3s;
+.grid{
+  display:grid;
+  grid-template-columns:repeat(auto-fit,minmax(250px,1fr));
+  gap:20px;
 }
-.contact button:hover{ background:#e65c00; transform: scale(1.05); }
-
-/* FOOTER */
-footer{ text-align:center; padding:30px; background:#111; color:#777; border-top:1px solid #222; }
+.grid img{
+  width:100%;
+  height:300px;
+  object-fit:cover;
+  border-radius:6px;
+  cursor:pointer;
+  transition:0.3s;
+}
+.grid img:hover{
+  transform:scale(1.05);
+}
 
 /* LIGHTBOX */
 .lightbox{
-  position:fixed; top:0; left:0; width:100%; height:100%;
-  background:rgba(0,0,0,0.9); display:none; align-items:center; justify-content:center; z-index:2000;
+  position:fixed;
+  top:0; left:0;
+  width:100%; height:100%;
+  background:rgba(0,0,0,0.9);
+  display:none;
+  align-items:center;
+  justify-content:center;
+  z-index:2000;
 }
-.lightbox img{ max-width:90%; max-height:90%; border-radius:8px; }
+.lightbox img{
+  max-width:90%;
+  max-height:90%;
+  border-radius:8px;
+}
+
+/* BTS */
+.behind-scenes{
+  padding:80px 10%;
+  background:#111;
+  text-align:center;
+}
+.behind-scenes h2{
+  font-size:32px;
+  margin-bottom:10px;
+  letter-spacing:1px;
+}
+.behind-scenes p{
+  color:#bfbfbf;
+  margin-bottom:40px;
+}
+.bts-gallery{
+  display:grid;
+  grid-template-columns:repeat(auto-fit,minmax(250px,1fr));
+  gap:20px;
+}
+.bts-gallery img{
+  width:100%;
+  height:300px;
+  object-fit:cover;
+  border-radius:6px;
+  transition:0.3s;
+}
+.bts-gallery img:hover{
+  transform:scale(1.05);
+}
+
+/* SERVICES */
+.services{
+  padding:80px 10%;
+  background:#0f0f0f;
+  text-align:center;
+}
+.service-box{
+  display:flex;
+  flex-wrap:wrap;
+  justify-content:center;
+  gap:30px;
+  margin-top:40px;
+}
+.card{
+  width:250px;
+  background:#1a1a1a;
+  padding:20px;
+  border-radius:8px;
+  transition:0.3s;
+}
+.card:hover{ transform:translateY(-6px); }
+.card h3{ color:#ff6600; }
+
+/* PRICES */
+.prices{
+  padding:80px 10%;
+  background:#111;
+  text-align:center;
+}
+.price-box{
+  display:flex;
+  flex-wrap:wrap;
+  justify-content:center;
+  gap:30px;
+  margin-top:40px;
+}
+.price-card{
+  background:#1a1a1a;
+  padding:20px;
+  border-radius:8px;
+  width:250px;
+}
+
+/* PHOTOGRAPHER */
+.photographer{
+  padding:80px 10%;
+  background:#0f0f0f;
+  text-align:center;
+}
+.photographer img{
+  width:200px; height:200px;
+  border-radius:50%;
+  border:4px solid #ff6600;
+  object-fit:cover;
+}
+
+/* CONTACT */
+.contact{
+  padding:80px 10%;
+  text-align:center;
+  background:#111;
+}
+.contact button{
+  margin-top:20px;
+  padding:14px 28px;
+  border:none;
+  background:#ff6600;
+  color:white;
+  font-weight:600;
+  border-radius:4px;
+  cursor:pointer;
+}
+.contact button:hover{
+  background:#e65c00;
+}
+
+/* FOOTER */
+footer{
+  text-align:center;
+  padding:30px;
+  background:#0f0f0f;
+  color:#777;
+}
 
 /* RESPONSIVE */
 @media(max-width:768px){
   .hero h1{ font-size:2rem; }
-  .grid img, .bts-gallery img{ height:220px; }
-  .menu-toggle{ display:block; }
-  #nav-menu{ position:absolute; top:70px; right:10%; flex-direction:column; display:none; background:#111; padding:20px; border-radius:6px; width:200px; }
-  #nav-menu a{ margin:10px 0; }
+  .grid img{ height:220px; }
 }
 </style>
 </head>
@@ -143,150 +310,106 @@ footer{ text-align:center; padding:30px; background:#111; color:#777; border-top
 </header>
 
 <!-- HERO -->
-<section class="hero reveal">
-  <h1>Capturing Moments That Last Forever</h1>
-  <p>Wedding Photos • Birthday Shoots • Passport Photos • Funeral Livestreams • Videography • Graphic Design</p>
-  <a href="#contact"><button>Book a Session</button></a>
+<section class="hero">
+<h1>Capturing Moments That Last Forever</h1>
+<p>Wedding Photos • Birthday Shoots • Passport Photos • Funeral Livestreams • Videography • Graphic Design</p>
+<a href="#contact"><button>Book a Session</button></a>
 </section>
 
 <!-- PORTFOLIO -->
 <section class="portfolio reveal" id="portfolio">
-  <h2>Portfolio</h2>
-  <div class="grid">
-    <div class="grid-item"><img src="https://picsum.photos/500/600?1" onclick="openLightbox(this.src)"><span>Wedding Moments</span></div>
-    <div class="grid-item"><img src="https://picsum.photos/500/600?2" onclick="openLightbox(this.src)"><span>Birthday Shoot</span></div>
-    <div class="grid-item"><img src="https://picsum.photos/500/600?3" onclick="openLightbox(this.src)"><span>Event Coverage</span></div>
-    <div class="grid-item"><img src="https://picsum.photos/500/600?4" onclick="openLightbox(this.src)"><span>Family Portraits</span></div>
-    <div class="grid-item"><img src="https://picsum.photos/500/600?5" onclick="openLightbox(this.src)"><span>Engagement Shoot</span></div>
-    <div class="grid-item"><img src="https://picsum.photos/500/600?6" onclick="openLightbox(this.src)"><span>Creative Concepts</span></div>
-  </div>
+<h2>Portfolio</h2>
+<div class="grid">
+<img src="https://picsum.photos/500/600?1" onclick="openLightbox(this.src)">
+<img src="https://picsum.photos/500/600?2" onclick="openLightbox(this.src)">
+<img src="https://picsum.photos/500/600?3" onclick="openLightbox(this.src)">
+<img src="https://picsum.photos/500/600?4" onclick="openLightbox(this.src)">
+<img src="https://picsum.photos/500/600?5" onclick="openLightbox(this.src)">
+<img src="https://picsum.photos/500/600?6" onclick="openLightbox(this.src)">
+</div>
 </section>
 
 <!-- BTS -->
 <section class="behind-scenes reveal" id="bts">
-  <h2>Behind The Scenes</h2>
-  <p>A glimpse into the moments behind the camera.</p>
-  <div class="bts-gallery">
-    <div class="bts-item"><img src="https://picsum.photos/500/600?7"><span>Studio Setup</span></div>
-    <div class="bts-item"><img src="https://picsum.photos/500/600?8"><span>Lighting Prep</span></div>
-    <div class="bts-item"><img src="https://picsum.photos/500/600?9"><span>Editing Process</span></div>
-  </div>
+<h2>Behind The Scenes</h2>
+<p>A glimpse into the moments behind the camera.</p>
+<div class="bts-gallery">
+<img src="https://picsum.photos/500/600?7" onclick="openLightbox(this.src)">
+<img src="https://picsum.photos/500/600?8" onclick="openLightbox(this.src)">
+<img src="https://picsum.photos/500/600?9" onclick="openLightbox(this.src)">
+</div>
 </section>
 
 <!-- SERVICES -->
 <section class="services reveal" id="services">
-  <h2>Our Services</h2>
-  <div class="service-box">
-    <div class="card"><h3>Wedding Photos</h3><p>Cinematic wedding photography coverage.</p></div>
-    <div class="card"><h3>Birthday Shoots</h3><p>Creative birthday photo sessions.</p></div>
-    <div class="card"><h3>Passport Photos</h3><p>Quick professional passport photos.</p></div>
-    <div class="card"><h3>Funeral Livestream</h3><p>High quality livestream services.</p></div>
-    <div class="card"><h3>Videography</h3><p>Full event video coverage.</p></div>
-    <div class="card"><h3>Graphic Design</h3><p>Social media & branding designs.</p></div>
-  </div>
+<h2>Our Services</h2>
+<div class="service-box">
+<div class="card"><h3>Wedding Photos</h3><p>Cinematic wedding photography coverage.</p></div>
+<div class="card"><h3>Birthday Shoots</h3><p>Creative birthday photo sessions.</p></div>
+<div class="card"><h3>Passport Photos</h3><p>Quick professional passport photos.</p></div>
+<div class="card"><h3>Funeral Livestream</h3><p>High quality livestream services.</p></div>
+</div>
 </section>
 
 <!-- PRICES -->
 <section class="prices reveal" id="prices">
-  <h2>Price List</h2>
-  <div class="price-box">
-    <div class="price-card">
-      <h3>Intimate Moments Wedding Package</h3>
-      <p><strong>$30,000 JMD</strong></p>
-      <ul>
-        <li>2 hours coverage</li>
-        <li>Ceremony photography</li>
-        <li>80–100 edited photos</li>
-        <li>USB delivery</li>
-        <li>7–10 day turnaround</li>
-        <li>10 physical photos</li>
-        <li>1 frame included</li>
-      </ul>
-    </div>
-    <div class="price-card">
-      <h3>Golden Day Wedding Package</h3>
-      <p><strong>$55,000 JMD</strong></p>
-      <ul>
-        <li>4 hours coverage</li>
-        <li>Ceremony + couple portraits</li>
-        <li>Family group photos</li>
-        <li>1 frame included</li>
-        <li>Photo Album (25 photos)</li>
-        <li>150–200 edited photos</li>
-        <li>Sneak peek within 48 hours</li>
-        <li>7–10 day turnaround</li>
-        <li>USB delivery</li>
-      </ul>
-    </div>
-    <div class="price-card">
-      <h3>Add-Ons</h3>
-      <ul>
-        <li>Extra hour: $10,000 JMD</li>
-        <li>Express editing: $10,000 JMD</li>
-        <li>Engagement shoot: $20,000 JMD</li>
-        <li>Wedding highlight video: $15,000 JMD</li>
-      </ul>
-    </div>
-    <div class="price-card">
-      <h3>Birthday Photoshoot</h3><p>$8,000 – $12,000 JMD | 1–2 hour session</p>
-    </div>
-    <div class="price-card">
-      <h3>Passport / ID Photos</h3><p>$800 – $1,500 JMD per photo</p>
-    </div>
-    <div class="price-card">
-      <h3>Funeral Livestream</h3><p>$15,000 – $28,000 JMD</p>
-    </div>
-    <div class="price-card">
-      <h3>Videography</h3><p>$10,000 – $15,000 JMD per hour</p>
-    </div>
-    <div class="price-card">
-      <h3>Engagement Shoot</h3><p>$18,000 – $25,000 JMD</p>
-    </div>
-    <div class="price-card">
-      <h3>Graphic Design</h3><p>$2,000 – $5,000 JMD per design</p>
-    </div>
-    <div class="price-card">
-      <h3>Photo Album (standard)</h3><p>$5,000 – $10,000 JMD</p>
-    </div>
-    <div class="price-card">
-      <h3>Physical Prints</h3><p>$200 – $500 JMD per print</p>
-    </div>
-    <div class="price-card">
-      <h3>USB Delivery</h3><p>$1,000 JMD</p>
-    </div>
-  </div>
+<h2>Price List</h2>
+<div class="price-box">
+<div class="price-card"><h3>Intimate Moments Wedding Package</h3><p><strong>$30,000 JMD</strong></p>
+<ul><li>2 hours coverage</li><li>Ceremony photography</li><li>80–100 edited photos</li><li>USB delivery</li><li>7–10 day turnaround</li><li>10 physical photos</li><li>1 frame included</li></ul></div>
+<div class="price-card"><h3>Golden Day Wedding Package</h3><p><strong>$55,000 JMD</strong></p>
+<ul><li>4 hours coverage</li><li>Ceremony + couple portraits</li><li>Family group photos</li><li>1 frame included</li><li>Photo album (25 photos)</li><li>150–200 edited photos</li><li>Sneak peek within 48 hours</li><li>7–10 day turnaround</li><li>USB delivery</li></ul></div>
+<div class="price-card"><h3>Add-Ons</h3><ul><li>Extra hour: $10,000 JMD</li><li>Express editing: $10,000 JMD</li><li>Engagement shoot: $20,000 JMD</li><li>Wedding highlight video: $15,000 JMD</li></ul></div>
+<div class="price-card"><h3>Birthday Photoshoot</h3><p>$8,000 – $12,000 JMD</p><p>1–2 hour session</p></div>
+<div class="price-card"><h3>Passport / ID Photos</h3><p>$800 – $1,500 JMD</p></div>
+<div class="price-card"><h3>Funeral Livestream</h3><p>$15,000 – $28,000 JMD</p></div>
+<div class="price-card"><h3>Videography</h3><p>$10,000 – $15,000 JMD per hour</p></div>
+<div class="price-card"><h3>Engagement Shoot</h3><p>$18,000 – $25,000 JMD</p></div>
+<div class="price-card"><h3>Graphic Design</h3><p>$2,000 – $5,000 JMD per design</p></div>
+<div class="price-card"><h3>Photo Album</h3><p>$5,000 – $10,000 JMD</p></div>
+<div class="price-card"><h3>Physical Prints</h3><p>$200 – $500 JMD per print</p></div>
+<div class="price-card"><h3>USB Delivery</h3><p>$1,000 JMD</p></div>
+</div>
 </section>
 
 <!-- PHOTOGRAPHER -->
 <section class="photographer reveal" id="photographer">
-  <h2>Meet The Photographer</h2>
-  <img src="https://picsum.photos/200/200">
-  <p>Hello! I'm Andy Powell, the creative mind behind 4PF Photo Studio. I focus on capturing real emotion and timeless moments through professional photography and video.</p>
+<h2>Meet The Photographer</h2>
+<img src="https://picsum.photos/200/200" alt="Photographer">
+<p>Hello! I'm Andy Powell, the creative mind behind 4PF Photo Studio. I focus on capturing real emotion and timeless moments through professional photography and video.</p>
 </section>
 
 <!-- CONTACT -->
 <section class="contact reveal" id="contact">
-  <h2>Book a Session</h2>
-  <p>Email: 4pfphotostudio@gmail.com</p>
-  <p>Instagram: @4pfdesignsandphotography</p>
-  <p>Contact: 1 (658) 281-1586</p>
-  <a href="https://wa.me/16582811586" target="_blank"><button>Book on WhatsApp</button></a>
+<h2>Book a Session</h2>
+<p>Email: 4pfphotostudio@gmail.com</p>
+<p>Instagram: @4pfdesignsandphotography</p>
+<p>Contact: 1(658)-281-1586</p>
+<a href="https://wa.me/16582811586" target="_blank"><button>Book on WhatsApp</button></a>
 </section>
 
-<footer>© 2026 4PF Photo Studio</footer>
+<!-- FOOTER -->
+<footer>
+© 2026 4PF Photo Studio
+</footer>
 
 <!-- LIGHTBOX -->
 <div class="lightbox" id="lightbox" onclick="closeLightbox()">
-  <img id="lightbox-img">
+<img id="lightbox-img" alt="Zoomed Image">
 </div>
 
 <script>
 /* LIGHTBOX */
-function openLightbox(src){ document.getElementById("lightbox").style.display="flex"; document.getElementById("lightbox-img").src=src; }
-function closeLightbox(){ document.getElementById("lightbox").style.display="none"; }
+function openLightbox(src){
+  document.getElementById("lightbox").style.display="flex";
+  document.getElementById("lightbox-img").src=src;
+}
+function closeLightbox(){
+  document.getElementById("lightbox").style.display="none";
+}
 
-/* SCROLL REVEAL */
-window.addEventListener("scroll", function(){
+/* SCROLL ANIMATION */
+window.addEventListener("scroll",function(){
   let reveals=document.querySelectorAll(".reveal");
   reveals.forEach(section=>{
     let windowHeight=window.innerHeight;
@@ -295,8 +418,12 @@ window.addEventListener("scroll", function(){
   });
 });
 
-/* MENU TOGGLE */
-function toggleMenu(){ let menu=document.getElementById("nav-menu"); menu.classList.toggle("active"); }
+/* MOBILE DROPDOWN */
+function toggleMenu(){
+  let menu = document.getElementById("nav-menu");
+  menu.classList.toggle("active");
+}
 </script>
+
 </body>
 </html>
