@@ -44,6 +44,7 @@ nav a:hover{
     color:#ff6600;
 }
 
+
 /* Hero Section */
 .hero{
     height:90vh;
@@ -120,6 +121,68 @@ nav a:hover{
     transform: scale(1.05);
     filter: brightness(1);
 }
+
+<!-- Behind The Scenes Section -->
+<section class="behind-scenes">
+  <h2>Behind The Scenes</h2>
+  <p class="bts-subtitle">A glimpse into the moments behind the magic.</p>
+
+  <div class="bts-gallery">
+    <div class="bts-item">
+      <img src="images/bts1.jpg" alt="Behind the scenes photo 1">
+    </div>
+
+    <div class="bts-item">
+      <img src="images/bts2.jpg" alt="Behind the scenes photo 2">
+    </div>
+
+    <div class="bts-item">
+      <img src="images/bts3.jpg" alt="Behind the scenes photo 3">
+    </div>
+  </div>
+</section>
+
+<style>
+.behind-scenes{
+  padding:60px 10%;
+  background:#0d0d0d;
+  text-align:center;
+  color:white;
+}
+
+.behind-scenes h2{
+  font-size:32px;
+  margin-bottom:10px;
+  letter-spacing:1px;
+}
+
+.bts-subtitle{
+  color:#bfbfbf;
+  margin-bottom:40px;
+}
+
+.bts-gallery{
+  display:grid;
+  grid-template-columns:repeat(3,1fr);
+  gap:20px;
+}
+
+.bts-item{
+  overflow:hidden;
+  border-radius:8px;
+}
+
+.bts-item img{
+  width:100%;
+  height:300px;
+  object-fit:cover;
+  transition:transform 0.4s ease;
+}
+
+.bts-item img:hover{
+  transform:scale(1.05);
+}
+</style>
 
 /* Services Section */
 .services{
